@@ -16,13 +16,17 @@ class DiceRoller extends StatefulWidget {
 }
 
 class _DiceRollerState extends State<DiceRoller> {
-  var currentDiceRoll = 1;
+  var currentFirstDiceRoll = 1;
+  var currentSecondDiceRoll = 1;
+  double currentFirstDiceAngle = 0;
+  double currentSecondDiceAngle = 0;
 
   void rollDice() {
-    int firstRandomNumber = randomizer.nextInt(6) + 1;
-
     setState(() {
-      currentDiceRoll = firstRandomNumber;
+      currentFirstDiceRoll = randomizer.nextInt(6) + 1;
+      currentSecondDiceRoll = randomizer.nextInt(6) + 1;
+      currentFirstDiceAngle = randomizer.nextInt(360) + 1;
+      currentSecondDiceAngle = randomizer.nextInt(360) + 1;
     });
   }
 
@@ -31,18 +35,29 @@ class _DiceRollerState extends State<DiceRoller> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Transform.rotate(
-          angle: 150,
-          child: Image.asset(
-            'assets/images/dice-images/dice-$currentDiceRoll.png',
-            width: 180,
-          ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Transform.rotate(
+              angle: currentFirstDiceAngle,
+              child: Image.asset(
+                'assets/images/dice-images/dice-$currentFirstDiceRoll.png',
+                width: 130,
+              ),
+            ),
+            Transform.rotate(
+              angle: currentSecondDiceAngle,
+              child: Image.asset(
+                'assets/images/dice-images/dice-$currentSecondDiceRoll.png',
+                width: 130,
+              ),
+            ),
+          ],
         ),
         const SizedBox(
           height: 18,
         ),
-        TextButton(
-            onPressed: rollDice, child: const CustomStyledText('Roll Dice'))
+        TextButton(onPressed: rollDice, child: const CustomStyledText('Roll '))
       ],
     );
   }
