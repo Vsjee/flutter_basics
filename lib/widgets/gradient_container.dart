@@ -24,7 +24,9 @@ class GradientContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: [
-          CustomStyledText(),
+          CustomStyledText(
+              "I am a custom text, I'm from other planet and i want to play "),
+          CustomStyledText('cs2 rigth now'),
           Icon(
             Icons.heart_broken,
             color: Colors.green,

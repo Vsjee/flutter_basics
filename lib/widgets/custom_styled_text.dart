@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 class CustomStyledText extends StatelessWidget {
-  const CustomStyledText({super.key});
+  const CustomStyledText(this.text, {super.key});
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
-      "I am a custom text, I'm from other planet and i want to play cs2 rigth now",
+    return Text(
+      text,
       textAlign: TextAlign.center,
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.white,
         fontSize: 30,
         fontWeight: FontWeight.bold,
