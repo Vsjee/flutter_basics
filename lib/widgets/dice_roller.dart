@@ -16,8 +16,9 @@ class DiceRoller extends StatefulWidget {
 }
 
 class _DiceRollerState extends State<DiceRoller> {
-  var currentFirstDiceRoll = 1;
-  var currentSecondDiceRoll = 1;
+  int score = 0;
+  int currentFirstDiceRoll = 1;
+  int currentSecondDiceRoll = 1;
   double currentFirstDiceAngle = 0;
   double currentSecondDiceAngle = 0;
 
@@ -27,6 +28,7 @@ class _DiceRollerState extends State<DiceRoller> {
       currentSecondDiceRoll = randomizer.nextInt(6) + 1;
       currentFirstDiceAngle = randomizer.nextInt(360) + 1;
       currentSecondDiceAngle = randomizer.nextInt(360) + 1;
+      score = currentFirstDiceRoll + currentSecondDiceRoll;
     });
   }
 
@@ -35,6 +37,10 @@ class _DiceRollerState extends State<DiceRoller> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
+        CustomStyledText(score.toString()),
+        const SizedBox(
+          height: 18,
+        ),
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
