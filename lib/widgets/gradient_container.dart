@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'custom_styled_text.dart';
 
-const linearGradientColors = [
+const List<Color> linearGradientColors = [
   Color.fromARGB(255, 33, 0, 90),
   Color.fromARGB(255, 81, 0, 158),
 ];
